@@ -1,3 +1,2 @@
 ﻿/databases/capacity_assesment_tools/folder.dmt views/dmt views.vql
-/extensions/jars/denodo-storedprocedures-vdp-dmr.vql
 /databases/capacity_assesment_tools/folder.dmt views/storedprocedures/dmr_getquerybycacheandhourvdpqueries.vql
