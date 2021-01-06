@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE PROCEDURE dmr_getcountbyvdpviewandaccessinterfacevdpqueries
+    CLASSNAME='com.denodo.connect.dmr.vdp.denodo_dmr_storedprocedures.GetCountByVdpviewAndAccessinterfaceVdpQueries'
+    JARS 'denodo-storedprocedures-vdp-dmr'
+    FOLDER = '/dmt views';
+

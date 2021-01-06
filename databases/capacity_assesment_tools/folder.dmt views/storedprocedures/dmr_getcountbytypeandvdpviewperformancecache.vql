@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE PROCEDURE dmr_getcountbytypeandvdpviewperformancecache
+    CLASSNAME='com.denodo.connect.dmr.vdp.denodo_dmr_storedprocedures.GetCountByTypeandVdpviewPerformanceCache'
+    JARS 'denodo-storedprocedures-vdp-dmr'
+    FOLDER = '/dmt views';
+

@@ -1,0 +1,4 @@
+﻿/databases/capacity_assesment_tools/folder.excel views/excel views.vql
+/extensions/jars/denodo-log-customwrapper-dmr.vql
+/databases/capacity_assesment_tools/folder.dmt views/dmt views.vql
+/databases/capacity_assesment_tools/folder.dmt views/datasources/custom/base_vdp_resources_pattern.vql

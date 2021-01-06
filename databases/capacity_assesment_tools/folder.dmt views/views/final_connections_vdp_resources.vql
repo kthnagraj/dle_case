@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW final_connections_vdp_resources FOLDER = '/dmt views' AS SELECT date AS date, dateinmillis AS dateinmillis, threadcount AS threadcount, peakthreadcount AS peakthreadcount, vdptotalconn AS vdptotalconn, vdpactiveconn AS vdpactiveconn, vdpactiverequests AS vdpactiverequests, vdpwaitingrequests AS vdpwaitingrequests, startdate AS startdate, enddate AS enddate, "FILEPATH" AS "FILEPATH" FROM p_base_vdp_resources_pattern_2 ORDER BY date ASC;
+

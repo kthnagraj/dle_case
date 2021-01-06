@@ -1,0 +1,9 @@
+﻿/databases/capacity_assesment_tools/folder.excel views/excel views.vql
+/databases/capacity_assesment_tools/folder.excel views/folder.requests per hour/requests per hour.vql
+/extensions/jars/denodo-log-customwrapper-dmr.vql
+/databases/capacity_assesment_tools/folder.dmt views/dmt views.vql
+/databases/capacity_assesment_tools/folder.dmt views/datasources/custom/base_vdp_resources_pattern.vql
+/databases/capacity_assesment_tools/folder.excel views/views/base_vdp_resources_pattern.vql
+/databases/capacity_assesment_tools/folder.excel views/views/iv_base_vdp_resources_pattern_capacity_assesment.vql
+/databases/capacity_assesment_tools/folder.excel views/datasources/custom/ds_excel_tools.vql
+/databases/capacity_assesment_tools/folder.excel views/views/bv_excel_logs_location.vql

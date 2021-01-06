@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW get_count_by_vdpview_and_clientip_vdp_queries FOLDER = '/dmt views' AS SELECT dbquery AS dbquery, dbcache AS dbcache, vdpview AS vdpview, username AS username, clientip AS clientip, startdate AS startdate, enddate AS enddate, accessinterface AS accessinterface, count AS count, avgduration AS avgduration, avgnumrows AS avgnumrows, countcompleted AS countcompleted, countcached AS countcached FROM dmr_getcountbyvdpviewandclientipvdpqueries();
+

@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW final_cpu_gc_usage_vdp_resources FOLDER = '/excel views/cpu_usage' AS SELECT date AS date, cpupercentage AS cpupercentage, gc_percentagepsmarksweep AS gc_percentagepsmarksweep, gc_percentagepsscavenge AS gc_percentagepsscavenge, gc_percentage AS gc_percentage, dateinmillis AS dateinmillis, startdate AS startdate, enddate AS enddate, "FILEPATH" AS "FILEPATH" FROM p_base_vdp_resources_pattern_2 ORDER BY date ASC;
+

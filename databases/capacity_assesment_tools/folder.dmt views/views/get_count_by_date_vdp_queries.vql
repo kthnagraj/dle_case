@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW get_count_by_date_vdp_queries FOLDER = '/dmt views' AS SELECT dbquery AS dbquery, dbcache AS dbcache, startdate AS startdate, enddate AS enddate, incomingdate AS incomingdate, count AS count, avgduration AS avgduration, avgwaitingtime AS avgwaitingtime, countnumrows AS countnumrows, avgnumrows AS avgnumrows, countcompleted AS countcompleted, countcached AS countcached, dateinmillis AS dateinmillis FROM dmr_getcountbydatevdpqueries();
+

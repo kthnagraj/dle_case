@@ -1,0 +1,22 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM ds_excel_tools
+    FOLDER = '/excel views'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM ds_excel_tools
+    FOLDER = '/excel views'
+    DATASOURCENAME=ds_excel_tools
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.capacity_assesment_tools.folder.excel views.views.custom.ds_excel_tools.File location.ROUTE.LOCAL.PATH}',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Start cell' = 'A3',
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        "Server Name" = 'Server Name' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "Logs Folder" = 'Logs Folder' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+    );
+

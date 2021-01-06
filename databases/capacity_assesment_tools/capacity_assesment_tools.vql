@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATABASE capacity_assesment_tools;
+
+ALTER DATABASE capacity_assesment_tools
+  CHARSET DEFAULT;
+

@@ -1,0 +1,11 @@
+﻿CREATE OR REPLACE MAP simple requesttype_monitor_vdp_queries (
+    'CALL PROCEDURE' = 'call'
+    'DELETE' = 'delete'
+    'INSERT' = 'insert'
+    'QUERY WRAPPER' = 'other'
+    'SELECT BASE VIEW' = 'select'
+    'SELECT VIEW' = 'select'
+    'UNKNOWN' = 'other'
+    'UPDATE' = 'update'
+);
+

@@ -1,0 +1,99 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER CUSTOM base_vdp_queries_pattern
+    FOLDER = '/dmt views'
+    DATASOURCENAME=base_vdp_queries_pattern
+    PARAMETERS (
+      'Date Pattern' = 'yyyy-MM-dd''T''HH:mm:ss.SSS',
+      'Date Extractor Pattern' = '(?:\\S*\\t+\\S*\\t+\\S*\\t+)?(?:[\^\\t]+)\\t(?:[\^\\t]+)\\t(?:[\^\\t]+)\\t(?:endRequest|startRequest)\\t(?:[0-9]+)\\t(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}})(?:.*?)',
+      'Log timezone' = 'PST',
+      'Content Extractor Pattern' = '(?:\\S*\\t+\\S*\\t+\\S*\\t+)?([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t(endRequest)\\t([0-9]+)\\t(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}})\\t(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}}|\\-)\\t([0-9\\-]+)\\t([0-9\\-]+)\\t(\\-?[0-9]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t(SELECT VIEW|INSERT|CREATE|DELETE|UPDATE|CALL PROCEDURE|QUERY WRAPPER|SELECT BASE VIEW)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)(?:\\t?.*?)',
+      'Filepath' = ROUTE LOCAL 'LocalConnection' '${databases.capacity_assesment_tools.folder.dmt views.views.custom.base_vdp_queries_pattern.Filepath.ROUTE.LOCAL.PATH}',
+      'Sequential Search Interval' = 100,
+      'Rolling Implementation Class Name' = 'com.denodo.connect.log.rollingpolicy.ByDayLogRollingPolicy'
+    )
+    OUTPUTSCHEMA (
+        id = 'out0' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        database_0 = 'out1' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        username = 'out2' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        notificationtype = 'out3' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        sessionid = 'out4' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        starttime = 'out5' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        endtime = 'out6' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        duration = 'out7' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        waitingtime = 'out8' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        numrows = 'out9' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        state = 'out10' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        completed = 'out11' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        cache = 'out12' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        query = 'out13' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        requesttype = 'out14' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        elements = 'out15' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        useragent = 'out16' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        accessinterface = 'out17' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        clientip = 'out18' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        extracteddate_0 = 'Extracted Date' : 'java.time.LocalDate' (OPT) (sourcetypeid='91')  NOT NULL NOT SORTABLE NOT UPDATEABLE,
+        searchstartdate_0 = 'Search Start Date' : 'java.time.LocalDate' (OBL) (sourcetypeid='91')  NOT NULL NOT SORTABLE NOT UPDATEABLE,
+        searchenddate_0 = 'Search End Date' : 'java.time.LocalDate' (OPT) (sourcetypeid='91')  NOT SORTABLE NOT UPDATEABLE,
+        "FILEPATH" = 'FILEPATH' : 'java.lang.String' (OBL) (DEFAULTVALUE='C:\Denodo7\Denodo7GA\tools\monitor\denodo-monitor\logs')  EXTERN NOT SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE base_vdp_queries_pattern I18N us_pst (
+        id:text (sourcetypeid = '12'), 
+        database_0:text (sourcetypeid = '12'), 
+        username:text (sourcetypeid = '12'), 
+        notificationtype:text (sourcetypeid = '12'), 
+        sessionid:text (sourcetypeid = '12'), 
+        starttime:timestamp, 
+        endtime:timestamp, 
+        duration:long, 
+        waitingtime:long, 
+        numrows:long, 
+        state:text (sourcetypeid = '12'), 
+        completed:boolean, 
+        cache:boolean, 
+        query:text (sourcetypeid = '12'), 
+        requesttype:text (sourcetypeid = '12'), 
+        elements:text (sourcetypeid = '12'), 
+        useragent:text (sourcetypeid = '12'), 
+        accessinterface:text (sourcetypeid = '12'), 
+        clientip:text (sourcetypeid = '12'), 
+        extracteddate_0:date, 
+        searchstartdate_0:date, 
+        searchenddate_0:date, 
+        "FILEPATH":text
+    )
+    FOLDER = '/dmt views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD base_vdp_queries_pattern(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD id NOS ZERO ()
+             ADD database_0 NOS ZERO ()
+             ADD username NOS ZERO ()
+             ADD notificationtype NOS ZERO ()
+             ADD sessionid NOS ZERO ()
+             ADD starttime NOS ZERO ()
+             ADD endtime NOS ZERO ()
+             ADD duration NOS ZERO ()
+             ADD waitingtime NOS ZERO ()
+             ADD numrows NOS ZERO ()
+             ADD state NOS ZERO ()
+             ADD completed NOS ZERO ()
+             ADD cache NOS ZERO ()
+             ADD query NOS ZERO ()
+             ADD requesttype NOS ZERO ()
+             ADD elements NOS ZERO ()
+             ADD useragent NOS ZERO ()
+             ADD accessinterface NOS ZERO ()
+             ADD clientip NOS ZERO ()
+             ADD extracteddate_0 (any) OPT ANY
+             ADD searchstartdate_0 (=) OBL ONE
+             ADD searchenddate_0 (any) OPT ANY
+             ADD "FILEPATH" (=) OBL ONE
+        )
+        OUTPUTLIST (accessinterface, cache, clientip, completed, database_0, duration, elements, endtime, extracteddate_0, id, notificationtype, numrows, query, requesttype, searchenddate_0, searchstartdate_0, sessionid, starttime, state, useragent, username, waitingtime
+        )
+        WRAPPER (custom base_vdp_queries_pattern)
+    );
+

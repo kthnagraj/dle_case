@@ -1,0 +1,114 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER CUSTOM base_vdp_cache_pattern
+    FOLDER = '/dmt views'
+    DATASOURCENAME=base_vdp_cache_pattern
+    PARAMETERS (
+      'Date Pattern' = 'yyyy-MM-dd''T''HH:mm:ss.SSS',
+      'Date Extractor Pattern' = '(?:.*?)(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}})(?:.*?)',
+      'Log timezone' = 'PST',
+      'Content Extractor Pattern' = '(?:.*?)(endRefreshCacheProcess)\\t(?:.*?)\\t(?:.*?)\\t([0-9]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]*)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t([\^\\t]+)\\t(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}}|\\-)\\t(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}}|\\-)\\t([\^\\t]+)\\t(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}}|\\-)\\t(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}}|\\-)\\t([\^\\t]+)\\t(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}}|\\-)\\t(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}}|\\-)\\t([\^\\t]+)(?:.*?)',
+      'Filepath' = ROUTE LOCAL 'LocalConnection' '${databases.capacity_assesment_tools.folder.dmt views.views.custom.base_vdp_cache_pattern.Filepath.ROUTE.LOCAL.PATH}',
+      'Sequential Search Interval' = 100,
+      'Rolling Implementation Class Name' = 'com.denodo.connect.log.rollingpolicy.ByDayLogRollingPolicy'
+    )
+    OUTPUTSCHEMA (
+        notificationtype = 'out0' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        querypatternid = 'out1' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        databasename = 'out2' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        viewname = 'out3' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        out4 = 'out4' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        sqlviewname = 'out5' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        projectedfields = 'out6' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        numconditions = 'out7' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        vdpconditionlist = 'out8' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        cachestatus = 'out9' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        ttlstatusincache = 'out10' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        ttlincache = 'out11' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        querypatternstate = 'out12' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        exception = 'out13' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        numofinsertedrows = 'out14' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        numofreceivedrows = 'out15' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        startquerypatternstoragetime = 'out16' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        endquerypatternstoragetime = 'out17' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        querypatternstoragetime = 'out18' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        startcachedresultmetadatastoragetime = 'out19' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        endcachedresultmetadatastoragetime = 'out20' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        cachedresultmetadatastoragetime = 'out21' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        startdatastoragetime = 'out22' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        enddatastoragetime = 'out23' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        extracteddate_0 = 'Extracted Date' : 'java.time.LocalDate' (OPT) (sourcetypeid='91')  NOT NULL NOT SORTABLE NOT UPDATEABLE,
+        searchstartdate_0 = 'Search Start Date' : 'java.time.LocalDate' (OBL) (sourcetypeid='91')  NOT NULL NOT SORTABLE NOT UPDATEABLE,
+        searchenddate_0 = 'Search End Date' : 'java.time.LocalDate' (OPT) (sourcetypeid='91')  NOT SORTABLE NOT UPDATEABLE,
+        "FILEPATH" = 'FILEPATH' : 'java.lang.String' (OBL) (DEFAULTVALUE='C:\Denodo7\Denodo7GA\tools\monitor\denodo-monitor\logs')  EXTERN NOT SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE base_vdp_cache_pattern I18N us_pst (
+        notificationtype:text (sourcetypeid = '12'), 
+        querypatternid:text (sourcetypeid = '12'), 
+        databasename:text (sourcetypeid = '12'), 
+        viewname:text (sourcetypeid = '12'), 
+        out4:text (sourcetypeid = '12'), 
+        sqlviewname:text (sourcetypeid = '12'), 
+        projectedfields:text (sourcetypeid = '12'), 
+        numconditions:text (sourcetypeid = '12'), 
+        vdpconditionlist:text (sourcetypeid = '12'), 
+        cachestatus:text (sourcetypeid = '12'), 
+        ttlstatusincache:text (sourcetypeid = '12'), 
+        ttlincache:text (sourcetypeid = '12'), 
+        querypatternstate:text (sourcetypeid = '12'), 
+        exception:text (sourcetypeid = '12'), 
+        numofinsertedrows:long, 
+        numofreceivedrows:long, 
+        startquerypatternstoragetime:date, 
+        endquerypatternstoragetime:date, 
+        querypatternstoragetime:long, 
+        startcachedresultmetadatastoragetime:date, 
+        endcachedresultmetadatastoragetime:date, 
+        cachedresultmetadatastoragetime:long, 
+        startdatastoragetime:date, 
+        enddatastoragetime:date, 
+        extracteddate_0:date, 
+        searchstartdate_0:date, 
+        searchenddate_0:date, 
+        "FILEPATH":text
+    )
+    FOLDER = '/dmt views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD base_vdp_cache_pattern(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD notificationtype NOS ZERO ()
+             ADD querypatternid NOS ZERO ()
+             ADD databasename NOS ZERO ()
+             ADD viewname NOS ZERO ()
+             ADD out4 NOS ZERO ()
+             ADD sqlviewname NOS ZERO ()
+             ADD projectedfields NOS ZERO ()
+             ADD numconditions NOS ZERO ()
+             ADD vdpconditionlist NOS ZERO ()
+             ADD cachestatus NOS ZERO ()
+             ADD ttlstatusincache NOS ZERO ()
+             ADD ttlincache NOS ZERO ()
+             ADD querypatternstate NOS ZERO ()
+             ADD exception NOS ZERO ()
+             ADD numofinsertedrows NOS ZERO ()
+             ADD numofreceivedrows NOS ZERO ()
+             ADD startquerypatternstoragetime NOS ZERO ()
+             ADD endquerypatternstoragetime NOS ZERO ()
+             ADD querypatternstoragetime NOS ZERO ()
+             ADD startcachedresultmetadatastoragetime NOS ZERO ()
+             ADD endcachedresultmetadatastoragetime NOS ZERO ()
+             ADD cachedresultmetadatastoragetime NOS ZERO ()
+             ADD startdatastoragetime NOS ZERO ()
+             ADD enddatastoragetime NOS ZERO ()
+             ADD extracteddate_0 (any) OPT ANY
+             ADD searchstartdate_0 (=) OBL ONE
+             ADD searchenddate_0 (any) OPT ANY
+             ADD "FILEPATH" (=) OBL ONE
+        )
+        OUTPUTLIST (cachedresultmetadatastoragetime, cachestatus, databasename, endcachedresultmetadatastoragetime, enddatastoragetime, endquerypatternstoragetime, exception, extracteddate_0, notificationtype, numconditions, numofinsertedrows, numofreceivedrows, out4, projectedfields, querypatternid, querypatternstate, querypatternstoragetime, searchenddate_0, searchstartdate_0, sqlviewname, startcachedresultmetadatastoragetime, startdatastoragetime, startquerypatternstoragetime, ttlincache, ttlstatusincache, vdpconditionlist, viewname
+        )
+        WRAPPER (custom base_vdp_cache_pattern)
+    );
+

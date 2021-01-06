@@ -1,0 +1,141 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER CUSTOM base_vdp_resources_pattern
+    FOLDER = '/excel views'
+    DATASOURCENAME=base_vdp_resources_pattern
+    PARAMETERS (
+      'Date Pattern' = 'yyyy-MM-dd''T''HH:mm:ss.SSS',
+      'Date Extractor Pattern' = '(?:.*?)(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}})(?:.*?)',
+      'Log timezone' = 'PST',
+      'Content Extractor Pattern' = '(?:.*?)(\\d\{{4\}}-\\d\{{2\}}-\\d\{{2\}}T\\d\{{2\}}:\\d\{{2\}}:\\d\{{2\}}.\\d\{{3\}})\\t(\\d+)/(\\d+|-1)\\t(\\d+)/(\\d+|-1)\\t(\\d+)/(\\d+|-1)\\t(\\d+)/(\\d+|-1)\\t(\\d+)/(\\d+|-1)\\t(\\d+)/(\\d+|-1)\\t(\\d+)/(\\d+|-1)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t(\\d+\\.?\\d*)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t(\\d+)\\t(\\d+\\.?\\d*)\\t(\\d+\\.?\\d*)\\t(\\d+\\.?\\d*)(?:.*?)',
+      'Filepath' = ROUTE LOCAL 'LocalConnection' '${databases.capacity_assesment_tools.folder.excel views.views.custom.base_vdp_resources_pattern.Filepath.ROUTE.LOCAL.PATH}',
+      'Sequential Search Interval' = 10000,
+      'Rolling Implementation Class Name' = 'com.denodo.connect.log.rollingpolicy.ByDayLogRollingPolicy'
+    )
+    OUTPUTSCHEMA (
+        date = 'out0' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        permgen = 'out1' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        permgen_max = 'out2' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        survivorspace = 'out3' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        survivorspace_max = 'out4' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        tenuredgen = 'out5' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        tenuredgen_max = 'out6' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        edenspace = 'out7' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        edenspace_max = 'out8' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        codecache = 'out9' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        codecache_max = 'out10' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        heapmemoryusage = 'out11' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        heapmemoryusage_max = 'out12' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        nonheapmemoryusage = 'out13' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        nonheapmemoryusage_max = 'out14' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        loadedclasscount = 'out15' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        totalloadedclasscount = 'out16' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        threadcount = 'out17' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        peakthreadcount = 'out18' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        vdptotalconn = 'out19' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        vdpactiveconn = 'out20' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        vdpactiverequests = 'out21' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        vdpwaitingrequests = 'out22' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        vdptotalmem = 'out23' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        vdpmaxmem = 'out24' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        cpupercentage = 'out25' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        gc_cc_psmarksweep = 'out26' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        gc_cc_psscavenge = 'out27' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        gc_ct_psmarksweep = 'out28' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        gc_ct_psscavenge = 'out29' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        gc_percentagepsmarksweep = 'out30' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        gc_percentagepsscavenge = 'out31' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        gc_percentage = 'out32' : 'java.lang.String' (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        extracteddate_0 = 'Extracted Date' : 'java.time.LocalDate' (OPT) (sourcetypeid='91')  NOT NULL NOT SORTABLE NOT UPDATEABLE,
+        searchstartdate_0 = 'Search Start Date' : 'java.time.LocalDate' (OBL) (sourcetypeid='91')  NOT NULL NOT SORTABLE NOT UPDATEABLE,
+        searchenddate_0 = 'Search End Date' : 'java.time.LocalDate' (OPT) (sourcetypeid='91')  NOT SORTABLE NOT UPDATEABLE,
+        "FILEPATH" = 'FILEPATH' : 'java.lang.String' (OBL) (DEFAULTVALUE='C:\Denodo7\Denodo7GA\tools\monitor\denodo-monitor\logs')  EXTERN NOT SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE base_vdp_resources_pattern I18N us_pst (
+        date:timestamp, 
+        permgen:long, 
+        permgen_max:long, 
+        survivorspace:long, 
+        survivorspace_max:long, 
+        tenuredgen:long, 
+        tenuredgen_max:long, 
+        edenspace:long, 
+        edenspace_max:long, 
+        codecache:long, 
+        codecache_max:long, 
+        heapmemoryusage:long, 
+        heapmemoryusage_max:long, 
+        nonheapmemoryusage:long, 
+        nonheapmemoryusage_max:long, 
+        loadedclasscount:long, 
+        totalloadedclasscount:long, 
+        threadcount:long, 
+        peakthreadcount:long, 
+        vdptotalconn:long, 
+        vdpactiveconn:long, 
+        vdpactiverequests:long, 
+        vdpwaitingrequests:long, 
+        vdptotalmem:long, 
+        vdpmaxmem:long, 
+        cpupercentage:float, 
+        gc_cc_psmarksweep:long, 
+        gc_cc_psscavenge:long, 
+        gc_ct_psmarksweep:long, 
+        gc_ct_psscavenge:long, 
+        gc_percentagepsmarksweep:float, 
+        gc_percentagepsscavenge:float, 
+        gc_percentage:float, 
+        extracteddate_0:date, 
+        searchstartdate_0:date, 
+        searchenddate_0:date, 
+        "FILEPATH":text
+    )
+    FOLDER = '/excel views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD base_vdp_resources_pattern(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD date NOS ZERO ()
+             ADD permgen NOS ZERO ()
+             ADD permgen_max NOS ZERO ()
+             ADD survivorspace NOS ZERO ()
+             ADD survivorspace_max NOS ZERO ()
+             ADD tenuredgen NOS ZERO ()
+             ADD tenuredgen_max NOS ZERO ()
+             ADD edenspace NOS ZERO ()
+             ADD edenspace_max NOS ZERO ()
+             ADD codecache NOS ZERO ()
+             ADD codecache_max NOS ZERO ()
+             ADD heapmemoryusage NOS ZERO ()
+             ADD heapmemoryusage_max NOS ZERO ()
+             ADD nonheapmemoryusage NOS ZERO ()
+             ADD nonheapmemoryusage_max NOS ZERO ()
+             ADD loadedclasscount NOS ZERO ()
+             ADD totalloadedclasscount NOS ZERO ()
+             ADD threadcount NOS ZERO ()
+             ADD peakthreadcount NOS ZERO ()
+             ADD vdptotalconn NOS ZERO ()
+             ADD vdpactiveconn NOS ZERO ()
+             ADD vdpactiverequests NOS ZERO ()
+             ADD vdpwaitingrequests NOS ZERO ()
+             ADD vdptotalmem NOS ZERO ()
+             ADD vdpmaxmem NOS ZERO ()
+             ADD cpupercentage NOS ZERO ()
+             ADD gc_cc_psmarksweep NOS ZERO ()
+             ADD gc_cc_psscavenge NOS ZERO ()
+             ADD gc_ct_psmarksweep NOS ZERO ()
+             ADD gc_ct_psscavenge NOS ZERO ()
+             ADD gc_percentagepsmarksweep NOS ZERO ()
+             ADD gc_percentagepsscavenge NOS ZERO ()
+             ADD gc_percentage NOS ZERO ()
+             ADD extracteddate_0 (any) OPT ANY
+             ADD searchstartdate_0 (=) OBL ONE
+             ADD searchenddate_0 (any) OPT ANY
+             ADD "FILEPATH" (=) OBL ONE
+        )
+        OUTPUTLIST (codecache, codecache_max, cpupercentage, date, edenspace, edenspace_max, extracteddate_0, gc_cc_psmarksweep, gc_cc_psscavenge, gc_ct_psmarksweep, gc_ct_psscavenge, gc_percentage, gc_percentagepsmarksweep, gc_percentagepsscavenge, heapmemoryusage, heapmemoryusage_max, loadedclasscount, nonheapmemoryusage, nonheapmemoryusage_max, peakthreadcount, permgen, permgen_max, searchenddate_0, searchstartdate_0, survivorspace, survivorspace_max, tenuredgen, tenuredgen_max, threadcount, totalloadedclasscount, vdpactiveconn, vdpactiverequests, vdpmaxmem, vdptotalconn, vdptotalmem, vdpwaitingrequests
+        )
+        WRAPPER (custom base_vdp_resources_pattern)
+    );
+

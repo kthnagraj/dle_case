@@ -1,0 +1,18 @@
+﻿CREATE OR REPLACE TABLE ds_excel_tools I18N us_pst (
+        "Server Name":text (sourcetypeid = '12'), 
+        "Logs Folder":text (sourcetypeid = '12')
+    )
+    FOLDER = '/excel views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_excel_tools(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD "Server Name" (any) OPT ANY
+             ADD "Logs Folder" (any) OPT ANY
+        )
+        OUTPUTLIST ("Logs Folder", "Server Name"
+        )
+        WRAPPER (custom ds_excel_tools)
+    );
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATASOURCE CUSTOM base_vdp_queries_pattern
+    FOLDER = '/dmt views'
+    CLASSNAME='com.denodo.connect.log.LogCustomWrapper'
+    JARS 'denodo-log-customwrapper-dmr';
+

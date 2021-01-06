@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW get_count_by_vdpview_and_query_vdp_cache FOLDER = '/dmt views' AS SELECT dbquery AS dbquery, dbcache AS dbcache, startdate AS startdate, enddate AS enddate, vdpview AS vdpview, vdpconditionlist AS vdpconditionlist, count AS count FROM dmr_getcountbyvdpviewandqueryvdpcache();
+
