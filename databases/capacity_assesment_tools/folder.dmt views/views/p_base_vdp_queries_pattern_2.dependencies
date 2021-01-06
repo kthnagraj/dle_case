@@ -1,6 +1,0 @@
-﻿/databases/capacity_assesment_tools/folder.dmt views/dmt views.vql
-/databases/capacity_assesment_tools/maps/requesttype_monitor_vdp_queries.vql
-/extensions/jars/denodo-log-customwrapper-dmr.vql
-/databases/capacity_assesment_tools/folder.dmt views/datasources/custom/base_vdp_queries_pattern.vql
-/databases/capacity_assesment_tools/folder.dmt views/views/base_vdp_queries_pattern.vql
-/databases/capacity_assesment_tools/folder.dmt views/views/p_base_vdp_queries_pattern.vql
