@@ -1,2 +1,0 @@
-﻿CREATE OR REPLACE VIEW test AS SELECT stringconcatenate('abc') FROM dual();
-
