@@ -1,5 +1,6 @@
 ﻿CREATE OR REPLACE PROCEDURE dmr_getquerybycacheandhourvdpqueries
     CLASSNAME='com.denodo.connect.dmr.vdp.denodo_dmr_storedprocedures.GetQueryByCacheAndHourVdpQueries'
     JARS 'denodo-storedprocedures-vdp-dmr'
-    FOLDER = '/dmt views';
+    FOLDER = '/dmt views'
+    DESCRIPTION = 'abctestaeff';
 
